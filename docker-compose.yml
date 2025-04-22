@@ -1,0 +1,18 @@
+# docker compose up -d
+
+version: "3.7"
+
+services:
+  postgres:
+    image: bitnami/postgresql:latest
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=admin
+      - POSTGRES_DB=projects
+    volumes:
+      - pg_instance:/bitnami/postgresql
+
+volumes:
+  pg_instance:

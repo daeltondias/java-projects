@@ -1,0 +1,41 @@
+.transition {
+  transition: all 0.2s ease-in-out;
+}
+
+.bg-hover:hover {
+  background-color: #f4f4f4;
+}
+
+.btn-hover:hover {
+  background-color: #a3a3a3;
+}
+
+.member-card {
+  user-select: none;
+  border: 1px solid var(--bs-gray-500);
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  display: flex;
+}
+
+.member-card > .icon {
+  border-right: 1px solid var(--bs-gray-500);
+  padding: 8px 6px 8px 8px;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  height: 100%;
+}
+
+.member-card > .text {
+  padding: 2px 10px;
+}
+
+.search-not-found {
+  display: none;
+}
+
+.hover-opacity:hover {
+  opacity: 0.5;
+}
