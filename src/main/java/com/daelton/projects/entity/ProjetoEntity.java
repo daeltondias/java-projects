@@ -17,9 +17,15 @@ import jakarta.persistence.Id;
 import java.time.LocalDate;
 import java.util.List;
 
-import lombok.Data;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 @Table(name = "projeto")
 @Entity(name = "projeto")
 public class ProjetoEntity {

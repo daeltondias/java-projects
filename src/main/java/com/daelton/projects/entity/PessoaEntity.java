@@ -9,9 +9,15 @@ import jakarta.persistence.Id;
 
 import java.time.LocalDate;
 
-import lombok.Data;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 @Table(name = "pessoa")
 @Entity(name = "pessoa")
 public class PessoaEntity {
