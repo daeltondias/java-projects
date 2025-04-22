@@ -7,7 +7,7 @@ import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
-public record ProjetoResquest(
+public record ProjetoRequest(
     @NotBlank String nome,
     @NotNull LocalDate data_inicio,
     @NotNull LocalDate data_previsao_fim,

@@ -5,7 +5,7 @@ import java.time.LocalDate;
 
 import jakarta.validation.constraints.DecimalMin;
 
-public record ProjetoResquestOptional(
+public record ProjetoRequestOptional(
     String nome,
     LocalDate data_inicio,
     LocalDate data_previsao_fim,

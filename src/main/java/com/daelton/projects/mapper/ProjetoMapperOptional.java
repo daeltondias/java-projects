@@ -5,7 +5,7 @@ import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;
 
 import com.daelton.projects.entity.ProjetoEntity;
-import com.daelton.projects.request.ProjetoResquestOptional;
+import com.daelton.projects.request.ProjetoRequestOptional;
 
 @Mapper(componentModel = "spring")
 public interface ProjetoMapperOptional {
@@ -16,5 +16,5 @@ public interface ProjetoMapperOptional {
   @Mapping(target = "gerente", ignore = true)
   @Mapping(target = "membros", ignore = true)
   @Mapping(target = "data_fim", ignore = true)
-  ProjetoEntity toEntity(ProjetoResquestOptional request);
+  ProjetoEntity toEntity(ProjetoRequestOptional request);
 }

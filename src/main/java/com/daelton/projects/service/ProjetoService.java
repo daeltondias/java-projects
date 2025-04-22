@@ -4,14 +4,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.daelton.projects.repository.MembroProjetoRepository;
-import com.daelton.projects.request.ProjetoResquestOptional;
+import com.daelton.projects.request.ProjetoRequestOptional;
 
 import jakarta.transaction.Transactional;
 
 import com.daelton.projects.mapper.ProjetoMapperOptional;
 import com.daelton.projects.repository.ProjetoRepository;
 import com.daelton.projects.repository.PessoaRepository;
-import com.daelton.projects.request.ProjetoResquest;
+import com.daelton.projects.request.ProjetoRequest;
 import com.daelton.projects.mapper.ProjetoMapper;
 import com.daelton.projects.entity.ProjetoEntity;
 import com.daelton.projects.entity.PessoaEntity;
@@ -48,7 +48,7 @@ public class ProjetoService {
     return projetos;
   }
 
-  public ProjetoDTO createProject(ProjetoResquest body) {
+  public ProjetoDTO createProject(ProjetoRequest body) {
     PessoaEntity pessoa = pessoaRepository.findById(body.idgerente()).get();
     ProjetoEntity projetoEntity = mapper.toEntity(body);
     projetoEntity.setMembros(Collections.emptyList());
@@ -66,7 +66,7 @@ public class ProjetoService {
     return projeto;
   }
 
-  public ProjetoDTO updateProject(String id, ProjetoResquestOptional body) throws Exception {
+  public ProjetoDTO updateProject(String id, ProjetoRequestOptional body) throws Exception {
     Long projetoID = Long.parseLong(id);
     ProjetoEntity projetoEntity = repository.findById(projetoID).get();
     if (body.idgerente() != null) {

@@ -28,8 +28,8 @@ import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.web.servlet.MockMvc;
 
 import com.daelton.projects.dto.ProjetoDTO;
-import com.daelton.projects.request.ProjetoResquest;
-import com.daelton.projects.request.ProjetoResquestOptional;
+import com.daelton.projects.request.ProjetoRequest;
+import com.daelton.projects.request.ProjetoRequestOptional;
 import com.daelton.projects.service.ProjetoService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -46,8 +46,8 @@ public class ProjetoControllerTest {
   private ProjetoService projetoService;
 
   private ProjetoDTO mockProjetoDTO;
-  private ProjetoResquest mockProjetoRequest;
-  private ProjetoResquestOptional mockProjetoRequestOptional;
+  private ProjetoRequest mockProjetoRequest;
+  private ProjetoRequestOptional mockProjetoRequestOptional;
 
   @BeforeEach
   void setUp() {
@@ -57,7 +57,7 @@ public class ProjetoControllerTest {
     mockProjetoDTO.setNome("Projeto Teste");
 
     // Setup mock request
-    mockProjetoRequest = new ProjetoResquest(
+    mockProjetoRequest = new ProjetoRequest(
         "Projeto Alpha",
         LocalDate.of(2025, 1, 1),
         LocalDate.of(2025, 12, 1),
@@ -67,7 +67,7 @@ public class ProjetoControllerTest {
         1L);
 
     // Setup mock optional request
-    mockProjetoRequestOptional = new ProjetoResquestOptional(
+    mockProjetoRequestOptional = new ProjetoRequestOptional(
         "Novo nome",
         null,
         null,
@@ -100,7 +100,7 @@ public class ProjetoControllerTest {
 
   @Test
   void createProject_ReturnsCreatedProject_WhenSuccessful() throws Exception {
-    when(projetoService.createProject(any(ProjetoResquest.class))).thenReturn(mockProjetoDTO);
+    when(projetoService.createProject(any(ProjetoRequest.class))).thenReturn(mockProjetoDTO);
 
     mockMvc.perform(post("/api/projects/new")
         .contentType(MediaType.APPLICATION_JSON)
@@ -113,7 +113,7 @@ public class ProjetoControllerTest {
 
   @Test
   void createProject_Returns400_WhenServiceThrowsException() throws Exception {
-    when(projetoService.createProject(any(ProjetoResquest.class))).thenThrow(new RuntimeException("Invalid data"));
+    when(projetoService.createProject(any(ProjetoRequest.class))).thenThrow(new RuntimeException("Invalid data"));
 
     mockMvc.perform(post("/api/projects/new")
         .contentType(MediaType.APPLICATION_JSON)
@@ -152,7 +152,7 @@ public class ProjetoControllerTest {
 
   @Test
   void updateProject_ReturnsUpdatedProject_WhenSuccessful() throws Exception {
-    when(projetoService.updateProject(anyString(), any(ProjetoResquestOptional.class))).thenReturn(mockProjetoDTO);
+    when(projetoService.updateProject(anyString(), any(ProjetoRequestOptional.class))).thenReturn(mockProjetoDTO);
 
     mockMvc.perform(patch("/api/projects/1")
         .contentType(MediaType.APPLICATION_JSON)
@@ -164,7 +164,7 @@ public class ProjetoControllerTest {
 
   @Test
   void updateProject_Returns404_WhenProjectNotFound() throws Exception {
-    when(projetoService.updateProject(anyString(), any(ProjetoResquestOptional.class)))
+    when(projetoService.updateProject(anyString(), any(ProjetoRequestOptional.class)))
         .thenThrow(new NoSuchElementException("Project not found"));
 
     mockMvc.perform(patch("/api/projects/999")

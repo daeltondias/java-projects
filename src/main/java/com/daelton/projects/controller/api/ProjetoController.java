@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.http.ResponseEntity;
 
-import com.daelton.projects.request.ProjetoResquestOptional;
-import com.daelton.projects.request.ProjetoResquest;
+import com.daelton.projects.request.ProjetoRequestOptional;
+import com.daelton.projects.request.ProjetoRequest;
 import com.daelton.projects.service.ProjetoService;
 import com.daelton.projects.dto.ProjetoDTO;
 
@@ -39,7 +39,7 @@ public class ProjetoController {
   }
 
   @PostMapping("/new")
-  public ResponseEntity<ProjetoDTO> createProject(@RequestBody @Valid ProjetoResquest body) {
+  public ResponseEntity<ProjetoDTO> createProject(@RequestBody @Valid ProjetoRequest body) {
     try {
       ProjetoDTO projeto = service.createProject(body);
       String location = projeto.getId().toString();
@@ -63,7 +63,7 @@ public class ProjetoController {
 
   @PatchMapping("/{id}")
   public ResponseEntity<ProjetoDTO> updateProject(@PathVariable String id,
-      @RequestBody @Valid ProjetoResquestOptional body) {
+      @RequestBody @Valid ProjetoRequestOptional body) {
     try {
       ProjetoDTO projeto = service.updateProject(id, body);
       return ResponseEntity.status(200).body(projeto);
